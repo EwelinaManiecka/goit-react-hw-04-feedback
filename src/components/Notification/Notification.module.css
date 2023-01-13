@@ -1,0 +1,8 @@
+.notification {
+  font-size: 30px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border: solid 2px black;
+}
