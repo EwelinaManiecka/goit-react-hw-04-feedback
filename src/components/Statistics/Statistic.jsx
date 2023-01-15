@@ -1,7 +1,8 @@
 import { number, func } from 'prop-types';
 import css from './Statistic.module.css';
 
-function Statistics({ good, neutral, bad, total, positivePercentage }) {
+const Statistics = props => {
+  const { good, neutral, bad, total, positivePercentage } = props;
   return (
     <div className={css.statistics}>
       <h2 className={css.statistics__title}>Statistics</h2>
@@ -25,14 +26,14 @@ function Statistics({ good, neutral, bad, total, positivePercentage }) {
       </ul>
     </div>
   );
-}
+};
 
 Statistics.propTypes = {
   good: number.isRequired,
   neutral: number.isRequired,
   bad: number.isRequired,
-  total: func.isRequired,
-  positivePercentage: func.isRequired,
+  total: number.isRequired,
+  positivePercentage: number.isRequired,
 };
 
 export default Statistics;

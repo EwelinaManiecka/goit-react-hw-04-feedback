@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './FeedbackOpinion.module.css';
 
 const FeedbackOpinions = props => {
@@ -25,9 +25,9 @@ const FeedbackOpinions = props => {
   );
 };
 
-// FeedbackOpinions.propTypes = {
-//   options: PropTypes.arrayOf(PropTypes.string),
-//   onLeaveFeedback: PropTypes.func,
-// };
+FeedbackOpinions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
+  onLeaveFeedback: PropTypes.func,
+};
 
 export default FeedbackOpinions;
