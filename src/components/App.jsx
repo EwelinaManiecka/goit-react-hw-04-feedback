@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import FeedbackOpinions from './Feedback/FeedbackOpinion';
 import Notification from './Notification/Notification';
@@ -17,13 +17,7 @@ const App = () => {
     name === 'bad' && setBad(bad + 1);
   };
 
-  useEffect(() => {
-    console.log(good, neutral, bad);
-  }, [good, neutral, bad]);
-
-  const countTotalFeedback = () => {
-    return good + bad + neutral;
-  };
+  const countTotalFeedback = () => good + bad + neutral;
 
   const countPositiveFeedbackPercentage = () => {
     return Math.trunc((good / countTotalFeedback()) * 100);
