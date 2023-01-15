@@ -1,4 +1,4 @@
-import { number, func } from 'prop-types';
+import { number } from 'prop-types';
 import css from './Statistic.module.css';
 
 const Statistics = props => {
