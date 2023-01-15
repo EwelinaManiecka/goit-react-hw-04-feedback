@@ -2,15 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 import FeedbackOpinions from './Feedback/FeedbackOpinion';
-import Statistics from './Statistics/Statistic';
 import Notification from './Notification/Notification';
-
-// class App extends Component {
-//   state = {
-//     good: 0,
-//     neutral: 0,
-//     bad: 0,
-//   };
+import Statistics from './Statistics/Statistic';
 
 const App = () => {
   const [good, setGood] = useState(0);
@@ -19,12 +12,9 @@ const App = () => {
 
   const onLeaveFeedback = event => {
     const name = event.target.name;
-    console.log(name);
-    name === 'good' && setGood(10 + 1);
+    name === 'good' && setGood(good + 1);
     name === 'neutral' && setNeutral(neutral + 1);
     name === 'bad' && setBad(bad + 1);
-
-    console.log(good, bad, neutral);
   };
 
   useEffect(() => {
@@ -40,6 +30,7 @@ const App = () => {
   };
 
   const btnNames = ['good', 'bad', 'neutral'];
+
   return (
     <div className="App">
       <section>
@@ -51,9 +42,11 @@ const App = () => {
           <Notification message="No feedback given" />
         ) : (
           <Statistics
-            // options={actualState}
+            good={good}
+            neutral={neutral}
+            bad={bad}
             total={countTotalFeedback}
-            positivePercentage={countPositiveFeedbackPercentage()}
+            positivePercentage={countPositiveFeedbackPercentage}
           />
         )}
       </section>
