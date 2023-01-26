@@ -6,24 +6,38 @@ import Notification from './Notification/Notification';
 import Statistics from './Statistics/Statistic';
 
 const App = () => {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
-
-  const onLeaveFeedback = event => {
-    const name = event.target.name;
-    name === 'good' && setGood(good + 1);
-    name === 'neutral' && setNeutral(neutral + 1);
-    name === 'bad' && setBad(bad + 1);
-  };
-
-  const countTotalFeedback = () => good + bad + neutral;
-
-  const countPositiveFeedbackPercentage = () => {
-    return Math.trunc((good / countTotalFeedback()) * 100);
-  };
+  const [stats, setStats] = useState({ good: 0, neutral: 0, bad: 0 });
 
   const btnNames = ['good', 'bad', 'neutral'];
+
+  const onLeaveFeedback = option => {
+    const name = option.target.name;
+    name === 'good' &&
+      setStats(lastStats => ({
+        ...lastStats,
+        good: lastStats.good + 1,
+      }));
+    name === 'neutral' &&
+      setStats(lastStats => ({
+        ...lastStats,
+        neutral: lastStats.neutral + 1,
+      }));
+    name === 'bad' &&
+      setStats(lastStats => ({
+        ...lastStats,
+        bad: lastStats.bad + 1,
+      }));
+  };
+
+  const countTotalFeedback = () => {
+    const { good, neutral, bad } = stats;
+    return good + bad + neutral;
+  };
+
+  const countPositiveFeedbackPercentage = () => {
+    const { good } = stats;
+    return Math.trunc((good / countTotalFeedback()) * 100);
+  };
 
   return (
     <div className="App">
@@ -36,9 +50,9 @@ const App = () => {
           <Notification message="No feedback given" />
         ) : (
           <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
+            good={stats.good}
+            neutral={stats.neutral}
+            bad={stats.bad}
             total={countTotalFeedback()}
             positivePercentage={countPositiveFeedbackPercentage()}
           />
