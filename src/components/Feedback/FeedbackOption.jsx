@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import css from './FeedbackOpinion.module.css';
+import css from './FeedbackOption.module.css';
 
 const FeedbackOpinions = props => {
   const { options, onLeaveFeedback } = props;
@@ -14,7 +14,7 @@ const FeedbackOpinions = props => {
               name={option}
               key={option}
               type="button"
-              onClick={onLeaveFeedback}
+              onClick={() => onLeaveFeedback(option)}
             >
               {option}
             </button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-import FeedbackOpinions from './Feedback/FeedbackOpinion';
+import FeedbackOpinions from './Feedback/FeedbackOption';
 import Notification from './Notification/Notification';
 import Statistics from './Statistics/Statistic';
 
@@ -11,18 +11,17 @@ const App = () => {
   const btnNames = ['good', 'bad', 'neutral'];
 
   const onLeaveFeedback = option => {
-    const name = option.target.name;
-    name === 'good' &&
+    option === 'good' &&
       setStats(lastStats => ({
         ...lastStats,
         good: lastStats.good + 1,
       }));
-    name === 'neutral' &&
+    option === 'neutral' &&
       setStats(lastStats => ({
         ...lastStats,
         neutral: lastStats.neutral + 1,
       }));
-    name === 'bad' &&
+    option === 'bad' &&
       setStats(lastStats => ({
         ...lastStats,
         bad: lastStats.bad + 1,
